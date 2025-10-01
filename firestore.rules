@@ -1,0 +1,12 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /posts/{postId} {
+      allow read: if true;  // 誰でも読める
+      allow create: if true;  // 誰でも投稿できる
+      allow delete: if true;  // 誰でも削除できる
+      allow update: if false;  // 編集は禁止
+    }
+  }
+}
